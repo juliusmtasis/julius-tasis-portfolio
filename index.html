@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Julius Tasis - Portfolio</title>
+    <title>Julius Tasis - Senior Multimedia Designer & Video Editor</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #ffffff;
@@ -29,88 +25,83 @@
             justify-content: space-between;
             align-items: center;
         }
-        .logo {
-            font-size: 20px;
-            font-weight: 700;
-            text-decoration: none;
-            color: #111827;
-            letter-spacing: -0.025em;
-        }
-        nav {
-            display: flex;
-            gap: 32px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        nav a {
-            text-decoration: none;
-            color: #4B5563;
-            transition: color 0.2s;
-        }
-        nav a:hover {
-            color: #111827;
-        }
+        .logo { font-size: 20px; font-weight: 700; text-decoration: none; color: #111827; letter-spacing: -0.025em; }
+        nav { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
+        nav a { text-decoration: none; color: #4B5563; transition: color 0.2s; }
+        nav a:hover { color: #111827; }
+        
         main {
             flex-grow: 1;
             max-width: 1200px;
             margin: 0 auto;
             padding: 48px 24px;
             width: 100%;
-            text-align: center;
         }
+
+        /* Hero Section */
         .hero {
-            max-width: 650px;
+            text-align: center;
+            max-width: 700px;
             margin: 0 auto 64px auto;
         }
         .hero h1 {
-            font-size: 42px;
+            font-size: 40px;
             font-weight: 700;
             letter-spacing: -0.025em;
             margin-bottom: 16px;
         }
-        .divider {
-            width: 96px;
-            height: 1px;
-            background-color: #D1D5DB;
-            margin: 24px auto;
-        }
         .hero p {
-            color: #4B5563;
             font-size: 16px;
+            color: #4B5563;
             line-height: 1.6;
         }
-        .grid {
+
+        /* Category Grid */
+        .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 32px;
             max-width: 1100px;
             margin: 0 auto;
         }
-        .card {
+        .category-card {
+            background-color: #000000;
+            border-radius: 4px;
+            overflow: hidden;
             text-decoration: none;
-            text-align: center;
+            display: block;
+            position: relative;
+            aspect-ratio: 4 / 3;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .card-image {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
             display: block;
         }
-        .card-box {
-            background-color: #000000;
-            aspect-ratio: 1 / 1;
-            border-radius: 4px;
-            margin-bottom: 16px;
-            transition: transform 0.3s ease;
+        .category-card:hover .card-image img {
+            transform: scale(1.03);
         }
-        .card:hover .card-box {
-            transform: scale(1.02);
-        }
-        .card h3 {
+        .card-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px 20px 16px 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+            color: #ffffff;
+            font-weight: 600;
             font-size: 18px;
-            font-weight: 700;
-            color: #111827;
-            letter-spacing: 0.025em;
-            transition: color 0.2s;
+            letter-spacing: -0.01em;
         }
-        .card:hover h3 {
-            color: #4B5563;
-        }
+
         footer {
             width: 100%;
             padding: 32px 0;
@@ -124,7 +115,6 @@
 </head>
 <body>
 
-    <!-- Header Navigation -->
     <header>
         <a href="index.html" class="logo">Julius Tasis</a>
         <nav>
@@ -133,52 +123,80 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <main>
         <div class="hero">
             <h1>Julius Tasis</h1>
-            <div class="divider"></div>
             <p>A Multimedia Designer specializing in strategic visual solutions and brand storytelling for global corporate enterprises.</p>
         </div>
 
-        <!-- Category Grid Section -->
-        <div id="work" class="grid">
-            <a href="digital-assets.html" class="card">
-                <div class="card-box"></div>
-                <h3>Digital Assets</h3>
+        <!-- Category Grid -->
+        <div id="work" class="category-grid">
+            <!-- Digital Assets -->
+            <a href="digital-assets.html" class="category-card">
+                <div class="card-image">
+                    <img src="images/digital_assets/cover.jpg" alt="Digital Assets">
+                </div>
+                <div class="card-title">Digital Assets</div>
             </a>
-            <a href="documents.html" class="card">
-                <div class="card-box"></div>
-                <h3>Documents</h3>
+
+            <!-- Documents -->
+            <a href="documents.html" class="category-card">
+                <div class="card-image">
+                    <img src="images/documents/cover.jpg" alt="Documents">
+                </div>
+                <div class="card-title">Documents</div>
             </a>
-            <a href="logos.html" class="card">
-                <div class="card-box"></div>
-                <h3>Logos</h3>
+
+            <!-- Logos -->
+            <a href="logos.html" class="category-card">
+                <div class="card-image">
+                    <img src="images/logos/cover.jpg" alt="Logos">
+                </div>
+                <div class="card-title">Logos</div>
             </a>
-            <a href="motion-graphics.html" class="card">
-                <div class="card-box"></div>
-                <h3>Motion Graphics</h3>
+
+            <!-- Motion Graphics -->
+            <a href="motion-graphics.html" class="category-card">
+                <div class="card-image">
+                    <img src="images/motion_graphics/cover.jpg" alt="Motion Graphics">
+                </div>
+                <div class="card-title">Motion Graphics</div>
             </a>
-            <a href="print.html" class="card">
-                <div class="card-box"></div>
-                <h3>Print</h3>
+
+            <!-- Print -->
+            <a href="print.html" class="category-card">
+                <div class="card-image">
+                    <img src="images/print/cover.jpg" alt="Print">
+                </div>
+                <div class="card-title">Print</div>
             </a>
-            <a href="social-graphics.html" class="card">
-                <div class="card-box"></div>
-                <h3>Social Graphics</h3>
+
+            <!-- Social Graphics -->
+            <a href="social-graphics.html" class="category-card">
+                <div class="card-image">
+                    <img src="images/social_graphics/cover.jpg" alt="Social Graphics">
+                </div>
+                <div class="card-title">Social Graphics</div>
             </a>
-            <a href="video-editing.html" class="card">
-                <div class="card-box"></div>
-                <h3>Video Editing</h3>
+
+            <!-- Video Editing -->
+            <a href="video-editing.html" class="category-card">
+                <div class="card-image">
+                    <img src="images/video_editing/cover.jpg" alt="Video Editing">
+                </div>
+                <div class="card-title">Video Editing</div>
             </a>
-            <a href="website.html" class="card">
-                <div class="card-box"></div>
-                <h3>Website</h3>
+
+            <!-- Website -->
+            <a href="website.html" class="category-card">
+                <div class="card-image">
+                    <img src="images/website/cover.jpg" alt="Website">
+                </div>
+                <div class="card-title">Website</div>
             </a>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer>
         <p>© 2026 Julius Tasis. All rights reserved.</p>
     </footer>
