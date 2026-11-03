@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motion Graphics - Julius Tasis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            color: #111827;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        header {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 20px; font-weight: 700; text-decoration: none; color: #111827; letter-spacing: -0.025em; }
+        nav { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
+        nav a { text-decoration: none; color: #4B5563; transition: color 0.2s; }
+        nav a:hover { color: #111827; }
+        main {
+            flex-grow: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px;
+            width: 100%;
+        }
+        .page-header { text-align: center; margin-bottom: 64px; }
+        .page-header h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.025em; margin-bottom: 16px; }
+        .divider { width: 64px; height: 1px; background-color: #D1D5DB; margin: 16px auto; }
+        .back-link { font-size: 12px; color: #6B7280; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s; }
+        .back-link:hover { color: #111827; }
+        
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .video-card {
+            background-color: #000000;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .thumbnail-container {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            pointer-events: none; /* Lets clicks pass straight to the card container */
+        }
+        .thumbnail-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* Play Button Overlay */
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 20px;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+        .video-card:hover .play-overlay {
+            background-color: #000000;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .video-title {
+            padding: 16px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #000000;
+            pointer-events: none;
+        }
+
+        /* Popup Video Modal */
+        #videoModal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content-wrapper {
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16 / 9;
+            background-color: #000;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+        .modal-content-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        footer {
+            width: 100%;
+            padding: 32px 0;
+            text-align: center;
+            font-size: 12px;
+            color: #9CA3AF;
+            border-top: 1px solid #F3F4F6;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Julius Tasis</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#work">Work</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1>Motion Graphics</h1>
+            <div class="divider"></div>
+            <a href="index.html#work" class="back-link">← Back to Categories</a>
+        </div>
+
+        <!-- Video Card Grid -->
+        <div class="video-grid">
+            <!-- Video 1 -->
+            <div class="video-card" onclick="openVideoModal('k2f7GQt84ow')">
+                <div class="thumbnail-container">
+                    <img src="https://img.youtube.com/vi/k2f7GQt84ow/hqdefault.jpg" alt="Motion Graphic 1">
+                    <div class="play-overlay">►</div>
+                </div>
+                <div class="video-title">Motion Project 01</div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="video-card" onclick="openVideoModal('zh_y5GsozeU')">
+                <div class="thumbnail-container">
+                    <img src="https://img.youtube.com/vi/zh_y5GsozeU/hqdefault.jpg" alt="Motion Graphic 2">
+                    <div class="play-overlay">►</div>
+                </div>
+                <div class="video-title">Motion Project 02</div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="video-card" onclick="openVideoModal('FTiykeKQviE')">
+                <div class="thumbnail-container">
+                    <img src="https://img.youtube.com/vi/FTiykeKQviE/hqdefault.jpg" alt="Motion Graphic 3">
+                    <div class="play-overlay">►</div>
+                </div>
+                <div class="video-title">Motion Project 03</div>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="video-card" onclick="openVideoModal('ARu4uOM7ZO8')">
+                <div class="thumbnail-container">
+                    <img src="https://img.youtube.com/vi/ARu4uOM7ZO8/hqdefault.jpg" alt="Motion Graphic 4">
+                    <div class="play-overlay">►</div>
+                </div>
+                <div class="video-title">Motion Project 04</div>
+            </div>
+
+            <!-- Video 5 -->
+            <div class="video-card" onclick="openVideoModal('ADzTbFz0V0w')">
+                <div class="thumbnail-container">
+                    <img src="https://img.youtube.com/vi/ADzTbFz0V0w/hqdefault.jpg" alt="Motion Graphic 5">
+                    <div class="play-overlay">►</div>
+                </div>
+                <div class="video-title">Motion Project 05</div>
+            </div>
+
+            <!-- Video 6 -->
+            <div class="video-card" onclick="openVideoModal('hArCXLI2nzk')">
+                <div class="thumbnail-container">
+                    <img src="https://img.youtube.com/vi/hArCXLI2nzk/hqdefault.jpg" alt="Motion Graphic 6">
+                    <div class="play-overlay">►</div>
+                </div>
+                <div class="video-title">Motion Project 06</div>
+            </div>
+
+            <!-- Video 7 -->
+            <div class="video-card" onclick="openVideoModal('VoJYUJNpPSs')">
+                <div class="thumbnail-container">
+                    <img src="https://img.youtube.com/vi/VoJYUJNpPSs/hqdefault.jpg" alt="Motion Graphic 7">
+                    <div class="play-overlay">►</div>
+                </div>
+                <div class="video-title">Motion Project 07</div>
+            </div>
+
+            <!-- Video 8 -->
+            <div class="video-card" onclick="openVideoModal('PQQG6AAHPeA')">
+                <div class="thumbnail-container">
+                    <img src="https://img.youtube.com/vi/PQQG6AAHPeA/hqdefault.jpg" alt="Motion Graphic 8">
+                    <div class="play-overlay">►</div>
+                </div>
+                <div class="video-title">Motion Project 08</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Popup Video Modal -->
+    <div id="videoModal" onclick="closeVideoModal()">
+        <div class="modal-content-wrapper" onclick="event.stopPropagation()">
+            <iframe id="modalIframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Julius Tasis. All rights reserved.</p>
+    </footer>
+
+    <!-- Video Modal Script -->
+    <script>
+        const modal = document.getElementById('videoModal');
+        const iframe = document.getElementById('modalIframe');
+
+        function openVideoModal(videoId) {
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal() {
+            modal.style.display = 'none';
+            iframe.src = ''; 
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+
+</body>
+</html>

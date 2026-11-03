@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Category - Julius Tasis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            color: #111827;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        header {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 20px; font-weight: 700; text-decoration: none; color: #111827; letter-spacing: -0.025em; }
+        nav { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
+        nav a { text-decoration: none; color: #4B5563; transition: color 0.2s; }
+        nav a:hover { color: #111827; }
+        main {
+            flex-grow: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px;
+            width: 100%;
+        }
+        .page-header { text-align: center; margin-bottom: 64px; }
+        .page-header h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.025em; margin-bottom: 16px; }
+        .divider { width: 64px; height: 1px; background-color: #D1D5DB; margin: 16px auto; }
+        .back-link { font-size: 12px; color: #6B7280; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s; }
+        .back-link:hover { color: #111827; }
+        
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .gallery-item {
+            background-color: #000000;
+            aspect-ratio: 1 / 1;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Fixed Fullscreen Lightbox Modal */
+        #lightboxModal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 99999;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-y: auto; /* Allows scrolling for tall images */
+            padding: 60px 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        #lightboxImage {
+            max-width: 90%;
+            height: auto;
+            margin: auto;
+            display: inline-block;
+            border-radius: 4px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+
+        footer {
+            width: 100%;
+            padding: 32px 0;
+            text-align: center;
+            font-size: 12px;
+            color: #9CA3AF;
+            border-top: 1px solid #F3F4F6;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Julius Tasis</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#work">Work</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1 id="category-title">Websites</h1>
+            <div class="divider"></div>
+            <a href="index.html#work" class="back-link">← Back to Categories</a>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox(this.querySelector('img'))">
+                <img src="images/website/website1.png" alt="Website 1">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this.querySelector('img'))">
+                <img src="images/website/website2.png" alt="Website 2">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this.querySelector('img'))">
+                <img src="images/website/website3.png" alt="Website 3">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this.querySelector('img'))">
+                <img src="images/website/website4.png" alt="Website 4">
+            </div>
+		<div class="gallery-item" onclick="openLightbox(this.querySelector('img'))">
+                <img src="images/website/website5.jpg" alt="Website 5">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this.querySelector('img'))">
+                <img src="images/website/website6.jpg" alt="Website 6">
+            </div>            
+		<div class="gallery-item" onclick="openLightbox(this.querySelector('img'))">
+                <img src="images/website/website7.jpg" alt="Website 7">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this.querySelector('img'))">
+                <img src="images/website/website8.jpg" alt="Website 8">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this.querySelector('img'))">
+                <img src="images/website/website9.png" alt="Website 9">
+            </div>
+        </div>
+    </main>
+
+    <!-- Popup Lightbox Modal Overlay -->
+    <div id="lightboxModal" onclick="closeLightbox()">
+        <img id="lightboxImage" src="" alt="Enlarged View">
+    </div>
+
+    <footer>
+        <p>© 2026 Julius Tasis. All rights reserved.</p>
+    </footer>
+
+    <!-- Lightbox Script -->
+    <script>
+        const modal = document.getElementById('lightboxModal');
+        const modalImg = document.getElementById('lightboxImage');
+
+        function openLightbox(imgElement) {
+            modalImg.src = imgElement.src;
+            modal.style.display = 'block'; // Shows the modal overlay
+            document.body.style.overflow = 'hidden'; // Prevents background scrolling behind the popup
+        }
+
+        function closeLightbox() {
+            modal.style.display = 'none'; // Hides the modal overlay
+            document.body.style.overflow = 'auto'; // Restores normal page scrolling
+        }
+    </script>
+<!-- Optional: Anti-Right Click & Drag Protection -->
+    <script>
+        // Disable right-click context menu on images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('contextmenu', e => e.preventDefault());
+            // Prevent dragging/saving by dragging
+            img.addEventListener('dragstart', e => e.preventDefault());
+        });
+    </script>
+</body>
+</html>
